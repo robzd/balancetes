@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: rgb(58, 0, 112);
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <form method="POST">
+        {% csrf_token %}
+        {{ receita_form.as_p }}
+        <input type="submit" name="adicionar_receita" value="Adicionar Receita">
+    </form>
+
+    <!-- Formulário para adicionar Despesa -->
+    <form method="POST">
+        {% csrf_token %}
+        {{ despesa_form.as_p }}
+        <input type="submit" name="adicionar_despesa" value="Adicionar Despesa">
+    </form>
+</body>
+</html>

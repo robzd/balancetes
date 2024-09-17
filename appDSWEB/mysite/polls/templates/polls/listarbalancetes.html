@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: rgb(58, 0, 112);
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Lista de Balancetes</h1>
+    <table border="1" style="margin: 20px auto; width: 80%; border-collapse: collapse;">
+        <tr>
+            <th>Nome</th>
+            <th>Data</th>
+            <th></th>
+        </tr>
+        {% if balancetes %}
+        {% for balancete in balancetes %}
+        <tr>
+            <td>{{ balancete.balanome }}</td>
+            <td>{{ balancete.baladata }}</td>
+            <td>
+                <a href="{% url 'polls:verbalancete' balancete.id %}"
+                    style="text-decoration: none; color: blue; font-weight: bold;">Ver Balancete</a>
+            </td>
+        </tr>
+        {% endfor %}
+        {% else %}
+        <tr>
+            <td colspan="4">Nenhum balancete encontrado.</td>
+        </tr>
+        {% endif %}
+    </table>
+</body>
+
+</html>

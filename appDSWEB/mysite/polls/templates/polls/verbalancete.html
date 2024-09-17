@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: rgb(58, 0, 112);
+            text-align: center;
+        }
+
+        th,
+        td {
+            padding: 5px 80px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 style="color: white;">Detalhes do Balancete</h1>
+    <div
+        style="border: 2px solid rgb(238, 255, 0); padding: 20px; margin: 20px auto; width: 60%; background-color: blueviolet;">
+        <p><strong>Nome:</strong> {{ balancete.balanome }}</p>
+        <p><strong>Data:</strong> {{ balancete.baladata }}</p>
+
+        {% if balancete.balafoto %}
+            <p><strong>Imagem:</strong></p>
+            <img src="{{ balancete.balafoto.url }}" alt="Imagem do Balancete" style="max-width: 100%; height: auto;" />
+        {% else %}
+            <p>Sem imagem disponível.</p>
+        {% endif %}
+
+        <p style="margin-top: 15px; font-size: 30px;"><strong>Saldo Geral:</strong> {{ saldogeral }}</p>
+        <p style="margin-top: 15px; font-size: 27px;"><strong>Saldo Atual:</strong> {{ saldoatual }}</p>
+        <p style="font-size: 20px;">(baseado na busca realizada)</p>
+
+        <div>
+
+            <div style="border: 4px solid rgb(238, 255, 0); background-color: blueviolet; 
+            display: inline-block; padding: 5px; margin-top: 40px;">
+                <a href="{% url 'polls:addreceitadespesa' balancete.id %}"
+                    style="font-size: 20px; text-decoration: none; color: rgb(238, 255, 0);">Adicionar Receita /
+                    Despesa</a>
+            </div>
+        </div>
+
+        <form method="GET" action="{% url 'polls:verbalancete' balancete.id %}"
+            style="margin: 20px auto; text-align: center;">
+            {% csrf_token %}
+            <input type="text" name="search" value="{{ search_query }}"
+                placeholder="Pesquisar Receita ou Despesa por nome"
+                style="padding: 10px; width: 80%; max-width: 400px; border: 1px solid rgb(238, 255, 0); border-radius: 5px; margin-right: 10px;">
+            <input type="submit" value="Buscar"
+                style="padding: 10px; cursor: pointer; background-color: blueviolet; color: rgb(238, 255, 0); border: 2px solid rgb(238, 255, 0); border-radius: 5px;">
+        </form>
+
+        <h2 style="margin-top: 30px;">Receitas</h2>
+        <table border="1" style="margin: 10px auto;">
+            <tr>
+                <th>Nome</th>
+                <th>Valor</th>
+            </tr>
+            {% for receita in receitas %}
+            <tr>
+                <td>{{ receita.receitanome }}</td>
+                <td>{{ receita.receitavalor }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="2">Nenhuma receita encontrada.</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <h2 style="margin-top: 35px;">Despesas</h2>
+        <table border="1" style="margin: 10px auto;">
+            <tr>
+                <th>Nome</th>
+                <th>Valor</th>
+            </tr>
+            {% for despesa in despesas %}
+            <tr>
+                <td>{{ despesa.despesanome }}</td>
+                <td>{{ despesa.despesavalor }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="2">Nenhuma despesa encontrada.</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+
+        <div style="margin-top: 60px; margin-bottom: 20px;">
+            <a href="{% url 'polls:listarbalancetes' %}" style="text-decoration: none; color: rgb(238, 255, 0); 
+            background-color: blueviolet; padding: 10px; 
+            border: 2px solid rgb(238, 255, 0); border-radius: 5px;">Voltar à lista</a>
+
+        </div>
+    </div>
+</body>
+
+</html>

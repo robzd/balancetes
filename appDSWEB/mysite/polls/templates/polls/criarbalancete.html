@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background-color: rgb(58, 0, 112);
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Criar" style="margin-top: 25px; font-size: 20px; background-color: blueviolet; color: rgb(238, 255, 0); padding: 10px; border-radius: 10px;">
+    </form>
+</body>
+</html>
