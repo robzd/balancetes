@@ -10,13 +10,32 @@
             background-color: rgb(58, 0, 112);
             text-align: center;
         }
+        p{
+            font-size: 30px;
+            color: rgb(238, 255, 0);
+        }
+        input{
+            font-size: 25px;
+        }
     </style>
 </head>
 <body>
-    <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Criar" style="margin-top: 25px; font-size: 20px; background-color: blueviolet; color: rgb(238, 255, 0); padding: 10px; border-radius: 10px;">
-    </form>
+    <h1 style="color: blueviolet; margin: 20px 0; font-family: 'Arial', sans-serif; 
+    text-shadow: 2px 4px 4px rgb(238, 255, 0); font-size: 50px;">
+        <i>Criar Balancete</i> </h1>
+
+    <div style="margin-top: 80px;">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Criar" style="cursor: pointer; margin-top: 35px; font-size: 25px; background-color: blueviolet; color: rgb(238, 255, 0); padding: 10px; border: 2px solid rgb(238, 255, 0); border-radius: 10px; height: auto; width: 120px;">
+        </form>
+    </div>
+
+    <div style="margin-top: 200px;">
+        <a href="{% url 'polls:menu' %}" style="text-decoration: none; color: rgb(238, 255, 0); 
+           background-color: blueviolet; padding: 10px; 
+           border: 2px solid rgb(238, 255, 0); border-radius: 10px; cursor: pointer;">Voltar</a>
+    </div>
 </body>
 </html>

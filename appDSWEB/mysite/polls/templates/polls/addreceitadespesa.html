@@ -11,20 +11,46 @@
             background-color: rgb(58, 0, 112);
             text-align: center;
         }
+
+        p{
+            font-size: 30px;
+            color: rgb(238, 255, 0);
+        }
+
+        input{
+            font-size: 25px;
+        }
     </style>
 </head>
 <body>
+    <h1 style="color: blueviolet; margin: 20px 0; font-family: 'Arial', sans-serif; 
+    text-shadow: 2px 4px 4px rgb(238, 255, 0); font-size: 50px;">
+        <i>Adicionar Receita</i> </h1>
+
     <form method="POST">
         {% csrf_token %}
-        {{ receita_form.as_p }}
-        <input type="submit" name="adicionar_receita" value="Adicionar Receita">
+        {{ receitaform.as_p }}
+        <input type="submit" name="adicionarreceita" value="Adicionar Receita"
+        style="margin-top: 35px; font-size: 25px; background-color: blueviolet; 
+        color: rgb(238, 255, 0); padding: 10px; border-radius: 10px; height: auto; width: 280px; cursor: pointer">
     </form>
 
-    <!-- Formulário para adicionar Despesa -->
+    <h1 style="color: blueviolet; margin: 70px 0px 20px 0px; font-family: 'Arial', sans-serif; 
+    text-shadow: 2px 4px 4px rgb(238, 255, 0); font-size: 50px;">
+        <i>Adicionar Despesa</i> </h1>
+
     <form method="POST">
         {% csrf_token %}
-        {{ despesa_form.as_p }}
-        <input type="submit" name="adicionar_despesa" value="Adicionar Despesa">
+        {{ despesaform.as_p }}
+        <input type="submit" name="adicionardespesa" value="Adicionar Despesa" 
+        style="margin-top: 35px; font-size: 25px; background-color: blueviolet; color: rgb(238, 255, 0); 
+        padding: 10px; border-radius: 10px; height: auto; width: 280px; cursor: pointer">
     </form>
+
+    <div style="margin-top: 50px;"></div>
+        <a href="{% url 'polls:verbalancete' balancete.id %}" style="text-decoration: none; color: rgb(238, 255, 0); 
+           background-color: blueviolet; padding: 10px; 
+           border: 2px solid rgb(238, 255, 0); border-radius: 10px; cursor: pointer;">Voltar</a>
+    </div>
 </body>
 </html>

@@ -13,21 +13,17 @@
     </style>
 </head>
 <body>
-    <h1 style="text-align: center; color: white; font-family: 'Brush Script MT', cursive;">
-        $$$$$$$$$ Finanças $$$$$$$$$ <br> $$$$$$$$$ Pessoais $$$$$$$$$</h1>
+    <h1 style="color: blueviolet; margin: 20px 0; font-family: 'Arial', sans-serif; 
+    text-shadow: 2px 4px 4px rgb(238, 255, 0); font-size: 70px;">
+        <i>Finanças Pessoais</i> </h1>
 
     <div style="border: 4px solid rgb(238, 255, 0); background-color: blueviolet; 
-    display: inline-block; padding: 5px; margin-top: 40px;">
-        <a href="{% url 'polls:criarbalancete' %}" style="font-size: 50px; text-decoration: none; color: rgb(238, 255, 0);">Criar Balancete</a>
+    display: inline-block; padding: 5px; margin-top: 40px; width: 250px;">
+        <a href="{% url 'polls:cadastro' %}" style="font-size: 50px; text-decoration: none; color: rgb(238, 255, 0);">Cadastrar</a>
     </div>
     <br>
     <div style="border: 4px solid rgb(238, 255, 0); background-color: blueviolet; 
-    display: inline-block; padding: 5px; margin-top: 40px;">
-        <a href="{% url 'polls:listarbalancetes' %}" style="font-size: 50px; text-decoration: none; color: rgb(238, 255, 0);">Listar Balancetes</a>
-    </div>
-
-
-    
-    
+    display: inline-block; padding: 5px; margin-top: 40px; width: 250px;">
+        <a href="{% url 'polls:login' %}" style="font-size: 50px; text-decoration: none; color: rgb(238, 255, 0);">Login</a>
 </body>
 </html>

@@ -1,26 +1,49 @@
 from django import forms
 from .models import Balancete, Receita, Despesa
+from django.contrib.auth.models import User
+
+class LoginForm(forms.Form):
+    username = forms.CharField(label='Nome de Usuário', max_length=150)
+    password = forms.CharField(label='Senha', widget=forms.PasswordInput)
+
+class CadastroForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['username', 'password']
+        widgets = {
+            'password': forms.PasswordInput(),
+        }
+
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        user.set_password(self.cleaned_data['password'])
+        if commit:
+            user.save()
+        return user
+    
 
 class BalanceteForm(forms.ModelForm):
     class Meta:
         model = Balancete
-        fields = ['balanome', 'baladata', 'balafoto']
+        fields = ['Nome', 'Data', 'Foto']
         widgets = {
-            'baladata': forms.DateInput(attrs={'type': 'date'}),
+            'Data': forms.DateInput(attrs={'type': 'date'}),
         }
 
 class ReceitaForm(forms.ModelForm):
     class Meta:
         model = Receita
-        fields = ['receitanome','receitavalor']
+        fields = ['Nome', 'Valor']
         widgets = {
-            'receitavalor': forms.NumberInput(attrs={'min': 0}),
+            'Nome': forms.TextInput(attrs={'class': 'Nome'}),
+            'Valor': forms.NumberInput(attrs={'class': 'Valor', 'min': 0}),
         }
 
 class DespesaForm(forms.ModelForm):
     class Meta:
         model = Despesa
-        fields = ['despesanome','despesavalor']
+        fields = ['Nome', 'Valor']
         widgets = {
-            'despesavalor': forms.NumberInput(attrs={'max': 0}),
+            'Nome': forms.TextInput(attrs={'class': 'Nome'}),
+            'Valor': forms.NumberInput(attrs={'class': 'Valor', 'max': 0}),
         }

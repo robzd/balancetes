@@ -17,21 +17,50 @@
         td {
             padding: 5px 80px;
         }
+
+        strong {
+            color: rgb(238, 255, 0);
+        }
+
+        p {
+            color: white;
+        }
+
+        h2 {
+            color: rgb(238, 255, 0);
+            font-size: 27px;
+        }
+
+        th {
+            font-size: 20px;
+            color: rgb(238, 255, 0);
+        }
+
+        td {
+            font-size: 20px;
+            color: white;
+        }
     </style>
 </head>
 
 <body>
-    <h1 style="color: white;">Detalhes do Balancete</h1>
+    <h1 style="color: blueviolet; margin: 20px 0; font-family: 'Arial', sans-serif; 
+    text-shadow: 2px 4px 4px rgb(238, 255, 0); font-size: 50px; margin-bottom: 60px;">
+        <i>Detalhes do Balancete</i>
+    </h1>
+
     <div
         style="border: 2px solid rgb(238, 255, 0); padding: 20px; margin: 20px auto; width: 60%; background-color: blueviolet;">
-        <p><strong>Nome:</strong> {{ balancete.balanome }}</p>
-        <p><strong>Data:</strong> {{ balancete.baladata }}</p>
 
-        {% if balancete.balafoto %}
-            <p><strong>Imagem:</strong></p>
-            <img src="{{ balancete.balafoto.url }}" alt="Imagem do Balancete" style="max-width: 100%; height: auto;" />
+        <p style="font-size: 25px;"><strong>Nome:</strong> {{ balancete.Nome }}</p>
+        <p style="font-size: 25px;"><strong>Data:</strong> {{ balancete.Data }}</p>
+
+        {% if balancete.Foto %}
+        <p style="font-size: 25px; margin-top: 15px;"><strong>Foto:</strong></p>
+        <img src="{{ balancete.Foto.url }}" alt="Foto do Balancete"
+            style="max-width: 400px; height: auto; margin: 15px; border: 2px solid rgb(238, 255, 0); padding: 5px;" />
         {% else %}
-            <p>Sem imagem disponível.</p>
+        <p>Sem imagem disponível.</p>
         {% endif %}
 
         <p style="margin-top: 15px; font-size: 30px;"><strong>Saldo Geral:</strong> {{ saldogeral }}</p>
@@ -66,8 +95,8 @@
             </tr>
             {% for receita in receitas %}
             <tr>
-                <td>{{ receita.receitanome }}</td>
-                <td>{{ receita.receitavalor }}</td>
+                <td>{{ receita.Nome }}</td>
+                <td>{{ receita.Valor }}</td>
             </tr>
             {% empty %}
             <tr>
@@ -84,8 +113,8 @@
             </tr>
             {% for despesa in despesas %}
             <tr>
-                <td>{{ despesa.despesanome }}</td>
-                <td>{{ despesa.despesavalor }}</td>
+                <td>{{ despesa.Nome }}</td>
+                <td>{{ despesa.Valor }}</td>
             </tr>
             {% empty %}
             <tr>

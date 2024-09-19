@@ -12,11 +12,28 @@
             background-color: rgb(58, 0, 112);
             text-align: center;
         }
+
+        th{
+            font-size: 20px;
+            color: rgb(238, 255, 0);
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+        td{
+            font-size: 20px;
+            color: white;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
     </style>
 </head>
 
 <body>
-    <h1>Lista de Balancetes</h1>
+    <h1 style="color: blueviolet; margin: 20px 0; font-family: 'Arial', sans-serif; 
+    text-shadow: 2px 4px 4px rgb(238, 255, 0); font-size: 50px; margin-bottom: 60px;">
+        <i>Lista de Balancetes</i> </h1>
+    
     <table border="1" style="margin: 20px auto; width: 80%; border-collapse: collapse;">
         <tr>
             <th>Nome</th>
@@ -26,11 +43,12 @@
         {% if balancetes %}
         {% for balancete in balancetes %}
         <tr>
-            <td>{{ balancete.balanome }}</td>
-            <td>{{ balancete.baladata }}</td>
+            <td>{{ balancete.Nome }}</td>
+            <td>{{ balancete.Data }}</td>
             <td>
                 <a href="{% url 'polls:verbalancete' balancete.id %}"
-                    style="text-decoration: none; color: blue; font-weight: bold;">Ver Balancete</a>
+                    style="text-decoration: none; color: rgb(238, 255, 0); font-weight: bold;
+                    font-size: 20px;">Ver Balancete</a>
             </td>
         </tr>
         {% endfor %}
@@ -40,6 +58,13 @@
         </tr>
         {% endif %}
     </table>
+
+    <div style="margin-top: 100px;"></div>
+        <a href="{% url 'polls:menu' %}" style="text-decoration: none; color: rgb(238, 255, 0); 
+           background-color: blueviolet; padding: 10px; 
+           border: 2px solid rgb(238, 255, 0); border-radius: 10px; cursor: pointer;">Voltar</a>
+    </div>
+
 </body>
 
 </html>
